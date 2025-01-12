@@ -112,7 +112,7 @@ defmodule Bundlex.Toolchain.VisualStudio do
 
   defp build_vcvarsall_path(root) do
     vswhere = Path.join([root, "Installer", "vswhere.exe"])
-    vswhere_args = ["-property", "installationPath", "-latest"]
+    vswhere_args = ["-property", "installationPath", "-latest", "-products", "*"]
 
     with true <- File.exists?(vswhere),
          {maybe_installation_path, 0} <- System.cmd(vswhere, vswhere_args) do
